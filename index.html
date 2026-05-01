@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LK Singh | Critical Minerals Trade Facilitation</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #112240;
+    --navy-light: #1a3460;
+    --gold: #c9922a;
+    --gold-light: #e8b84b;
+    --gold-pale: #f5e6c8;
+    --white: #f8f5f0;
+    --gray: #8a9bb0;
+    --border: rgba(201,146,42,0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* GRAIN OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(10,22,40,0.95), transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(201,146,42,0.08);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--white);
+  }
+
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--gray);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 10px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+
+  .nav-cta:hover {
+    background: var(--gold);
+    color: var(--navy);
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 120px 60px 80px;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 60% at 70% 50%, rgba(201,146,42,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 80% at 20% 80%, rgba(26,52,96,0.8) 0%, transparent 60%),
+      linear-gradient(135deg, #0a1628 0%, #0d1e38 50%, #0a1628 100%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(201,146,42,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,146,42,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    max-width: 720px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--border);
+    padding: 6px 16px;
+    margin-bottom: 32px;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: rgba(201,146,42,0.05);
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 6vw, 80px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--gray);
+    max-width: 520px;
+    margin-bottom: 48px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 16px 36px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(201,146,42,0.3);
+  }
+
+  .btn-secondary {
+    color: var(--white);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: gap 0.3s;
+  }
+
+  .btn-secondary:hover { gap: 14px; }
+
+  .hero-stats {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    animation: fadeLeft 0.8s 0.4s ease both;
+  }
+
+  .stat-item {
+    border: 1px solid var(--border);
+    padding: 20px 28px;
+    background: rgba(10,22,40,0.6);
+    backdrop-filter: blur(10px);
+    min-width: 180px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+
+  .stat-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: var(--gold);
+  }
+
+  .stat-item:hover { border-color: var(--gold); }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* SECTION BASE */
+  section {
+    padding: 100px 60px;
+    position: relative;
+  }
+
+  .section-tag {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-tag::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  /* OPPORTUNITY */
+  .opportunity {
+    background: linear-gradient(135deg, rgba(17,34,64,0.8) 0%, rgba(10,22,40,0.9) 100%);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .opp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-top: 60px;
+  }
+
+  .opp-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .opp-card {
+    background: rgba(10,22,40,0.8);
+    border: 1px solid var(--border);
+    padding: 28px 24px;
+    transition: all 0.3s;
+    cursor: default;
+  }
+
+  .opp-card:hover {
+    border-color: var(--gold);
+    background: rgba(201,146,42,0.05);
+    transform: translateY(-3px);
+  }
+
+  .opp-card.alert {
+    border-color: rgba(200,80,80,0.4);
+    background: rgba(200,80,80,0.05);
+  }
+
+  .opp-card.alert:hover { border-color: rgba(200,80,80,0.8); }
+
+  .opp-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 500;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .opp-card.alert .opp-num { color: #e05c5c; }
+
+  .opp-desc {
+    font-size: 12px;
+    color: var(--gray);
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+  }
+
+  .opp-text p {
+    color: var(--gray);
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-size: 15px;
+  }
+
+  .opp-deadline {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: 1px solid rgba(200,80,80,0.4);
+    padding: 16px 20px;
+    background: rgba(200,80,80,0.05);
+  }
+
+  .deadline-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #e05c5c;
+    flex-shrink: 0;
+    animation: pulse 1.5s infinite;
+  }
+
+  .deadline-text {
+    font-size: 13px;
+    color: #e05c5c;
+    letter-spacing: 0.05em;
+  }
+
+  /* HOW IT WORKS */
+  .how {
+    background: var(--navy);
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 60px;
+    position: relative;
+  }
+
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 48px;
+    left: calc(16.66% + 30px);
+    right: calc(16.66% + 30px);
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold), transparent 50%, var(--gold));
+    opacity: 0.3;
+  }
+
+  .step-card {
+    background: rgba(17,34,64,0.5);
+    border: 1px solid var(--border);
+    padding: 40px 32px;
+    transition: all 0.3s;
+    position: relative;
+  }
+
+  .step-card:hover {
+    border-color: var(--gold);
+    background: rgba(201,146,42,0.04);
+  }
+
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    font-weight: 300;
+    color: rgba(201,146,42,0.15);
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: var(--white);
+  }
+
+  .step-desc {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.7;
+  }
+
+  /* SUPPLY SIDE */
+  .supply {
+    background: linear-gradient(135deg, rgba(17,34,64,0.6) 0%, rgba(10,22,40,1) 100%);
+    border-top: 1px solid var(--border);
+  }
+
+  .supply-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-top: 60px;
+    align-items: start;
+  }
+
+  .supply-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .supply-table th {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    font-weight: 400;
+  }
+
+  .supply-table td {
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--gray);
+    border-bottom: 1px solid rgba(201,146,42,0.06);
+    vertical-align: top;
+  }
+
+  .supply-table td:first-child {
+    color: var(--white);
+    font-weight: 400;
+  }
+
+  .supply-table tr:hover td {
+    background: rgba(201,146,42,0.03);
+    color: var(--white);
+  }
+
+  .status-badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 8px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .status-active {
+    background: rgba(50,180,100,0.15);
+    color: #50c878;
+    border: 1px solid rgba(50,180,100,0.3);
+  }
+
+  .status-dev {
+    background: rgba(201,146,42,0.15);
+    color: var(--gold);
+    border: 1px solid var(--border);
+  }
+
+  .why-brazil {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .why-item {
+    display: flex;
+    gap: 16px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    background: rgba(10,22,40,0.5);
+    transition: all 0.3s;
+  }
+
+  .why-item:hover {
+    border-color: var(--gold);
+    background: rgba(201,146,42,0.04);
+  }
+
+  .why-icon {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
+  }
+
+  .why-text strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .why-text span {
+    font-size: 12px;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+
+  /* FEE */
+  .fee {
+    background: var(--navy);
+    text-align: center;
+  }
+
+  .fee-box {
+    max-width: 800px;
+    margin: 60px auto 0;
+    border: 1px solid var(--border);
+    padding: 60px;
+    background: rgba(17,34,64,0.5);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fee-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .fee-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 96px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .fee-label {
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 32px;
+  }
+
+  .fee-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--border);
+    margin: 32px auto;
+  }
+
+  .fee-points {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    text-align: left;
+  }
+
+  .fee-point strong {
+    display: block;
+    font-size: 13px;
+    color: var(--white);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
+  .fee-point span {
+    font-size: 12px;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  /* CONTACT */
+  .contact {
+    background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy) 100%);
+    border-top: 1px solid var(--border);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-top: 60px;
+    align-items: start;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .contact-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .contact-icon {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--gold);
+    font-size: 16px;
+  }
+
+  .contact-detail strong {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+
+  .contact-detail span {
+    font-size: 14px;
+    color: var(--white);
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-group label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: rgba(10,22,40,0.8);
+    border: 1px solid var(--border);
+    color: var(--white);
+    padding: 14px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+    appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--gold);
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: var(--gray);
+    opacity: 0.6;
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .form-group select option {
+    background: var(--navy);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: rgba(5,12,24,0.9);
+    border-top: 1px solid var(--border);
+    padding: 32px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--white);
+  }
+
+  .footer-logo span { color: var(--gold); }
+
+  .footer-text {
+    font-size: 12px;
+    color: var(--gray);
+    text-align: center;
+  }
+
+  .footer-cred {
+    font-size: 11px;
+    color: var(--gray);
+    text-align: right;
+    line-height: 1.6;
+  }
+
+  .footer-cred strong { color: var(--gold); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeLeft {
+    from { opacity: 0; transform: translateX(24px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section { padding: 60px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .hero-stats { display: none; }
+    .opp-grid, .supply-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .steps { grid-template-columns: 1fr; }
+    .steps::before { display: none; }
+    .fee-points { grid-template-columns: 1fr; }
+    .fee-box { padding: 32px 24px; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 16px; text-align: center; }
+    .footer-cred { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">LK<span>.</span>Singh</div>
+  <ul class="nav-links">
+    <li><a href="#opportunity">Opportunity</a></li>
+    <li><a href="#how">Process</a></li>
+    <li><a href="#supply">Supply</a></li>
+    <li><a href="#fee">Fee Structure</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Request Introduction</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Member, Critical Minerals Association</div>
+    <h1>Bridging India's<br><em>Clean Energy Demand</em><br>with Brazil's Supply</h1>
+    <p class="hero-sub">Independent trade facilitation connecting India's PLI-driven rare earth magnet manufacturers with qualified Brazilian NdPr producers. Zero cost until a binding agreement is signed.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Request Introduction</a>
+      <a href="#opportunity" class="btn-secondary">Learn More →</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">₹7,280Cr</div>
+      <div class="stat-label">India PLI Scheme</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">$126/kg</div>
+      <div class="stat-label">NdPr Oxide Price</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">7 Yr</div>
+      <div class="stat-label">Contract Duration</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">3%</div>
+      <div class="stat-label">Success Fee Only</div>
+    </div>
+  </div>
+</section>
+
+<!-- OPPORTUNITY -->
+<section class="opportunity" id="opportunity">
+  <div class="section-tag">The Opportunity</div>
+  <h2 class="section-title reveal">India's <em>Critical Supply Gap</em><br>Demands a Solution Now</h2>
+  <div class="opp-grid">
+    <div class="opp-cards reveal">
+      <div class="opp-card">
+        <div class="opp-num">₹7,280Cr</div>
+        <div class="opp-desc">Total PLI scheme outlay approved by Union Cabinet, November 2025</div>
+      </div>
+      <div class="opp-card">
+        <div class="opp-num">6,000</div>
+        <div class="opp-desc">MTPA total NdFeB magnet manufacturing capacity targeted across 5 winners</div>
+      </div>
+      <div class="opp-card alert">
+        <div class="opp-num">2 of 5</div>
+        <div class="opp-desc">PLI winners receive <strong>zero</strong> guaranteed NdPr supply from IREL — must source independently</div>
+      </div>
+      <div class="opp-card">
+        <div class="opp-num">95%+</div>
+        <div class="opp-desc">India's current NdPr import dependence on China — diversification is urgent and strategic</div>
+      </div>
+    </div>
+    <div class="opp-text reveal">
+      <p>India's Ministry of Heavy Industries has issued an RFP for integrated sintered NdFeB magnet manufacturing — the backbone of electric vehicles, wind turbines, and defence systems.</p>
+      <p>Five manufacturers will be selected. Only three receive guaranteed NdPr oxide from state-owned IREL. <strong style="color:var(--white)">Winners 4 and 5 face zero domestic supply</strong> — and a 7-year production obligation that legally requires them to source independently.</p>
+      <p>Brazil's rare earth producers offer the ideal non-Chinese supply solution, officially endorsed by the February 2026 Modi-Lula critical minerals MoU.</p>
+      <div class="opp-deadline">
+        <div class="deadline-dot"></div>
+        <div class="deadline-text">PLI Bid Deadline: May 28, 2026 — Technical Bids Open May 29</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-tag">The Process</div>
+  <h2 class="section-title reveal">How We <em>Facilitate</em><br>Your Supply Agreement</h2>
+  <div class="steps">
+    <div class="step-card reveal">
+      <div class="step-num">01</div>
+      <div class="step-title">Sign NCND Agreement</div>
+      <div class="step-desc">Both parties sign a standard Non-Circumvention Non-Disclosure agreement. This protects all identities and ensures your position is secured before any introduction is made. Zero commitment required at this stage.</div>
+    </div>
+    <div class="step-card reveal" style="transition-delay: 0.1s">
+      <div class="step-num">02</div>
+      <div class="step-title">Receive Introduction</div>
+      <div class="step-desc">Upon NCND execution, we facilitate a direct introduction between the qualified Indian PLI manufacturer and the Brazilian NdPr producer. We remain present in all communications throughout the process.</div>
+    </div>
+    <div class="step-card reveal" style="transition-delay: 0.2s">
+      <div class="step-num">03</div>
+      <div class="step-title">Agreement Signed</div>
+      <div class="step-desc">Both parties conduct their own due diligence and negotiate terms directly. Our 3% facilitator fee is triggered only upon execution of a binding offtake agreement. Zero cost at any earlier stage.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SUPPLY -->
+<section class="supply" id="supply">
+  <div class="section-tag">Supply Side</div>
+  <h2 class="section-title reveal">Brazilian Producers — <em>Non-Chinese</em><br>NdPr Supply Ready for India</h2>
+  <div class="supply-grid">
+    <div class="reveal">
+      <p style="color:var(--gray);font-size:15px;line-height:1.8;margin-bottom:32px">We have established preliminary contact with rare earth producers in Brazil's Minas Gerais and Goiás states — the world's most significant emerging REE provinces outside China and Australia. Producer identities are disclosed after NCND execution.</p>
+      <table class="supply-table">
+        <thead>
+          <tr>
+            <th>Specification</th>
+            <th>Detail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Product</td>
+            <td>NdPr Oxide / MREC</td>
+          </tr>
+          <tr>
+            <td>Purity</td>
+            <td>99%+ NdPr Oxide</td>
+          </tr>
+          <tr>
+            <td>Volume Available</td>
+            <td>100–3,000 MT/year</td>
+          </tr>
+          <tr>
+            <td>Contract Duration</td>
+            <td>7-year take-or-pay</td>
+          </tr>
+          <tr>
+            <td>Origin</td>
+            <td>Brazil (non-Chinese) ✓</td>
+          </tr>
+          <tr>
+            <td>Delivery Terms</td>
+            <td>CIF Indian port</td>
+          </tr>
+          <tr>
+            <td>First Delivery</td>
+            <td>From 2027 onwards</td>
+          </tr>
+          <tr>
+            <td>Govt. Framework</td>
+            <td>Modi-Lula MoU Feb 2026</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="why-brazil reveal">
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;margin-bottom:24px">Why <em>Brazil</em> for India's Supply</h3>
+      <div class="why-item">
+        <div class="why-icon">🇧🇷</div>
+        <div class="why-text">
+          <strong>Government-Endorsed Corridor</strong>
+          <span>February 2026 Modi-Lula MoU on critical minerals provides official bilateral framework for India-Brazil rare earth cooperation</span>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🛡️</div>
+        <div class="why-text">
+          <strong>Zero Geopolitical Risk</strong>
+          <span>Brazil carries no export restriction risk. China suspended its rare earth export controls only until November 2026 — then the risk returns</span>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">⚗️</div>
+        <div class="why-text">
+          <strong>Pilot Plants Active Now</strong>
+          <span>Brazilian producers are in active pilot plant operations in 2026 — with Final Investment Decisions targeted mid-2026, aligned to your PLI production timeline</span>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">✅</div>
+        <div class="why-text">
+          <strong>Proven Model — Altmin-CBL Precedent</strong>
+          <span>Indian company Altmin already secured a 5,000 T/yr Brazilian mineral offtake — proving this corridor works commercially, not just diplomatically</span>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">📦</div>
+        <div class="why-text">
+          <strong>Scale Flexibility</strong>
+          <span>Producers can discuss 100–3,000 MT/year — suitable for both trial orders and full 7-year PLI supply obligations</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEE -->
+<section class="fee" id="fee">
+  <div class="section-tag" style="justify-content:center">Fee Structure</div>
+  <h2 class="section-title reveal" style="text-align:center">Simple. <em>Success-Based.</em><br>Zero Upfront Cost.</h2>
+  <div class="fee-box reveal">
+    <div class="fee-num">3%</div>
+    <div class="fee-label">Facilitator Fee — Charged to Seller on Contract Execution Only</div>
+    <div class="fee-divider"></div>
+    <div class="fee-points">
+      <div class="fee-point">
+        <strong>Zero Upfront</strong>
+        <span>No retainer. No consultation fee. No cost at any stage before a binding agreement is signed by both parties.</span>
+      </div>
+      <div class="fee-point">
+        <strong>Success Only</strong>
+        <span>Our 3% fee is triggered exclusively upon execution of a binding offtake agreement. If no deal closes, we receive nothing.</span>
+      </div>
+      <div class="fee-point">
+        <strong>Seller Pays</strong>
+        <span>The facilitator fee is paid by the Brazilian producer — not the Indian buyer. Indian PLI manufacturers engage with us at zero cost.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-tag">Get in Touch</div>
+  <h2 class="section-title reveal">Ready to <em>Secure</em><br>Your Supply Chain?</h2>
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <p style="color:var(--gray);font-size:15px;line-height:1.8;margin-bottom:16px">Whether you are a Brazilian rare earth producer seeking India market access, or an Indian PLI applicant seeking non-Chinese supply security — reach out for a confidential 20-minute introduction call.</p>
+      <p style="color:var(--gray);font-size:14px;line-height:1.7;margin-bottom:32px">All enquiries are treated in strict confidence. Producer and buyer identities are protected under NCND until both parties confirm mutual interest.</p>
+      <div class="contact-item">
+        <div class="contact-icon">✉</div>
+        <div class="contact-detail">
+          <strong>Email</strong>
+          <span>lk@laksshaysiingh.in</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🏛</div>
+        <div class="contact-detail">
+          <strong>Credential</strong>
+          <span>Member, Critical Minerals Association</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🌐</div>
+        <div class="contact-detail">
+          <strong>Focus</strong>
+          <span>India–Brazil Critical Minerals Trade Facilitation</span>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">⚖</div>
+        <div class="contact-detail">
+          <strong>Legal</strong>
+          <span>Registered entity India · MSME · GST Compliant</span>
+        </div>
+      </div>
+
+      <!-- SETUP INSTRUCTIONS — VISIBLE ONLY BEFORE EMAILJS IS CONFIGURED -->
+      <div id="setup-notice" style="margin-top:28px;border:1px solid rgba(201,146,42,0.3);padding:18px;background:rgba(201,146,42,0.05);">
+        <p style="font-size:12px;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;font-weight:500;">⚙ One-Time Setup Required</p>
+        <p style="font-size:12px;color:var(--gray);line-height:1.7;margin-bottom:10px;">To activate the contact form so enquiries land in your inbox:</p>
+        <ol style="font-size:12px;color:var(--gray);line-height:1.9;padding-left:16px;">
+          <li>Go to <strong style="color:var(--white)">emailjs.com</strong> → Sign up free</li>
+          <li>Add Email Service → connect your Zoho/Gmail</li>
+          <li>Create Email Template → note your <strong style="color:var(--white)">Template ID</strong></li>
+          <li>Copy your <strong style="color:var(--white)">Public Key</strong> from Account → API Keys</li>
+          <li>Replace the 3 values marked <strong style="color:var(--gold)">YOUR_...</strong> in this file's script</li>
+        </ol>
+        <p style="font-size:11px;color:var(--gray);margin-top:10px;opacity:0.7">Free plan: 200 emails/month. More than enough to start.</p>
+      </div>
+    </div>
+
+    <div class="contact-form reveal">
+      <!-- FORM STATUS MESSAGES -->
+      <div id="form-success" style="display:none;border:1px solid rgba(50,180,100,0.4);background:rgba(50,180,100,0.08);padding:20px 24px;margin-bottom:20px;">
+        <p style="font-size:14px;color:#50c878;font-weight:500;margin-bottom:4px;">✓ Message Sent Successfully</p>
+        <p style="font-size:13px;color:var(--gray);">We will respond within 24 hours at lk@laksshaysiingh.in</p>
+      </div>
+      <div id="form-error" style="display:none;border:1px solid rgba(200,80,80,0.4);background:rgba(200,80,80,0.08);padding:20px 24px;margin-bottom:20px;">
+        <p style="font-size:14px;color:#e05c5c;font-weight:500;margin-bottom:4px;">⚠ Could Not Send</p>
+        <p style="font-size:13px;color:var(--gray);">Please email us directly at <strong style="color:var(--white)">lk@laksshaysiingh.in</strong></p>
+      </div>
+
+      <div id="contact-form-fields">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name *</label>
+            <input type="text" id="f-name" placeholder="Full name" required>
+          </div>
+          <div class="form-group">
+            <label>Company *</label>
+            <input type="text" id="f-company" placeholder="Company name" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address *</label>
+          <input type="email" id="f-email" placeholder="your@company.com" required>
+        </div>
+        <div class="form-group">
+          <label>Phone / WhatsApp</label>
+          <input type="tel" id="f-phone" placeholder="+1 or +91 or +55 ...">
+        </div>
+        <div class="form-group">
+          <label>I am a *</label>
+          <select id="f-role" required>
+            <option value="" disabled selected>Select your role</option>
+            <option>Brazilian Rare Earth Producer</option>
+            <option>Indian PLI Scheme Applicant</option>
+            <option>Indian Magnet Manufacturer</option>
+            <option>Investment / Financial Institution</option>
+            <option>Other — Please specify below</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Annual Volume Requirement / Capacity (MT)</label>
+          <select id="f-volume">
+            <option value="" disabled selected>Select approximate volume</option>
+            <option>Under 100 MT/year</option>
+            <option>100 – 300 MT/year</option>
+            <option>300 – 600 MT/year</option>
+            <option>600 – 1,200 MT/year</option>
+            <option>1,200 MT/year and above</option>
+            <option>Not yet determined</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message *</label>
+          <textarea id="f-message" placeholder="Briefly describe your supply requirement or production capacity..." required></textarea>
+        </div>
+        <button id="submit-btn" class="btn-primary" style="width:100%;text-align:center;border:none;cursor:pointer;" onclick="submitForm()">
+          <span id="btn-text">Request Confidential Introduction</span>
+          <span id="btn-loading" style="display:none;">Sending...</span>
+        </button>
+        <p style="font-size:11px;color:var(--gray);margin-top:12px;text-align:center;letter-spacing:0.05em">All submissions are treated in strict confidence under our NCND framework</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">LK<span>.</span>Singh</div>
+  <div class="footer-text">
+    © 2026 LK Singh Critical Minerals Trade Facilitation<br>
+    <span style="font-size:11px;opacity:0.6">India · Brazil · Critical Minerals</span>
+  </div>
+  <div class="footer-cred">
+    <strong>Member, Critical Minerals Association</strong><br>
+    lk@laksshaysiingh.in
+  </div>
+</footer>
+
+<!-- EMAILJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+  // ============================================================
+  // EMAILJS CONFIGURATION — REPLACE THESE 3 VALUES
+  // Step 1: Go to emailjs.com → sign up free
+  // Step 2: Add Email Service (connect Zoho or Gmail)
+  // Step 3: Create Email Template
+  // Step 4: Copy your Public Key from Account → API Keys
+  // ============================================================
+  const EMAILJS_PUBLIC_KEY   = 'YOUR_PUBLIC_KEY';      // from emailjs.com → Account → API Keys
+  const EMAILJS_SERVICE_ID   = 'YOUR_SERVICE_ID';      // from emailjs.com → Email Services
+  const EMAILJS_TEMPLATE_ID  = 'YOUR_TEMPLATE_ID';     // from emailjs.com → Email Templates
+
+  // Hide setup notice once keys are filled in
+  if (EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
+    document.getElementById('setup-notice').style.display = 'none';
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+  }
+
+  // ============================================================
+  // FORM SUBMISSION
+  // ============================================================
+  async function submitForm() {
+    const name    = document.getElementById('f-name').value.trim();
+    const company = document.getElementById('f-company').value.trim();
+    const email   = document.getElementById('f-email').value.trim();
+    const phone   = document.getElementById('f-phone').value.trim();
+    const role    = document.getElementById('f-role').value;
+    const volume  = document.getElementById('f-volume').value;
+    const message = document.getElementById('f-message').value.trim();
+
+    // Validation
+    if (!name || !company || !email || !role || !message) {
+      const fields = document.querySelectorAll('#contact-form-fields input[required], #contact-form-fields select[required], #contact-form-fields textarea[required]');
+      fields.forEach(f => {
+        if (!f.value.trim()) {
+          f.style.borderColor = '#e05c5c';
+          setTimeout(() => f.style.borderColor = '', 2500);
+        }
+      });
+      return;
+    }
+
+    // Email validation
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      document.getElementById('f-email').style.borderColor = '#e05c5c';
+      setTimeout(() => document.getElementById('f-email').style.borderColor = '', 2500);
+      return;
+    }
+
+    // If EmailJS not configured — fallback to mailto
+    if (EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+      const subject = encodeURIComponent(`PLI Enquiry — ${role} — ${company}`);
+      const body = encodeURIComponent(
+        `Name: ${name}\nCompany: ${company}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\nRole: ${role}\nVolume: ${volume || 'Not specified'}\n\nMessage:\n${message}`
+      );
+      window.location.href = `mailto:lk@laksshaysiingh.in?subject=${subject}&body=${body}`;
+      return;
+    }
+
+    // Loading state
+    document.getElementById('btn-text').style.display = 'none';
+    document.getElementById('btn-loading').style.display = 'inline';
+    document.getElementById('submit-btn').disabled = true;
+    document.getElementById('submit-btn').style.opacity = '0.7';
+
+    const templateParams = {
+      from_name:    name,
+      from_company: company,
+      from_email:   email,
+      from_phone:   phone || 'Not provided',
+      from_role:    role,
+      from_volume:  volume || 'Not specified',
+      message:      message,
+      reply_to:     email,
+      to_email:     'lk@laksshaysiingh.in',
+    };
+
+    try {
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+      // Success
+      document.getElementById('contact-form-fields').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+      document.getElementById('form-error').style.display = 'none';
+    } catch (err) {
+      // Error
+      document.getElementById('form-error').style.display = 'block';
+      document.getElementById('btn-text').style.display = 'inline';
+      document.getElementById('btn-loading').style.display = 'none';
+      document.getElementById('submit-btn').disabled = false;
+      document.getElementById('submit-btn').style.opacity = '1';
+    }
+  }
+
+  // Allow Enter key in inputs (not textarea)
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA' && e.target.closest('#contact-form-fields')) {
+      submitForm();
+    }
+  });
+
+  // ============================================================
+  // SCROLL REVEAL
+  // ============================================================
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // ============================================================
+  // NAV SCROLL EFFECT
+  // ============================================================
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      nav.style.background = 'rgba(10,22,40,0.98)';
+      nav.style.borderBottom = '1px solid rgba(201,146,42,0.15)';
+    } else {
+      nav.style.background = 'linear-gradient(to bottom, rgba(10,22,40,0.95), transparent)';
+      nav.style.borderBottom = '1px solid rgba(201,146,42,0.08)';
+    }
+  });
+
+  // ============================================================
+  // SMOOTH SCROLL
+  // ============================================================
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
